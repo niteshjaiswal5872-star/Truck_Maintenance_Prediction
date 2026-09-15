@@ -1,116 +1,123 @@
-# BMW Car Price Prediction Using Linear Regression
+# Truck Maintenance Prediction Using Logistic Regression
 
 ## Project Overview
 
-This project uses Machine Learning to predict the price of BMW cars using Linear Regression.
+This project uses Machine Learning to predict whether a truck requires maintenance based on different truck-related features.
 
-The project uses the BMW Cars Pakistan dataset and applies data preprocessing, feature selection, model training, prediction, and model evaluation.
+The project uses Logistic Regression, which is a supervised Machine Learning classification algorithm.
 
 ## Objective
 
-The objective of this project is to build a supervised Machine Learning model that can predict BMW car prices based on different features of the vehicle.
+The main objective of this project is to predict whether maintenance is required for a truck.
+
+The target variable has two possible values:
+
+* 0: Maintenance not needed
+* 1: Maintenance needed
 
 ## Dataset
 
-The dataset used in this project is BMW Cars Pakistan.
+The dataset contains information about trucks and their operating conditions.
 
-The dataset contains information about BMW cars, including:
+### Features
 
-* Car Name
-* Auction Rating
-* Model Year
-* Mileage
-* Fuel Type
-* Engine Capacity
-* Transmission
-* Engine Unit
-* Price (PKR)
+* Mileage_km
+* Engine_Hours
+* Truck_Age_Years
+* Previous_Repairs
+* Load_Weight_Tons
+* Average_Speed_kmh
+* Days_Since_Last_Service
+* Fuel_Type
 
-The target variable is:
+### Target Variable
 
-`Price (PKR)`
+`Maintenance_Needed`
 
-## Technologies Used
+The target is converted into numerical values:
 
-* Python
-* Pandas
-* Scikit-learn
-* Jupyter Notebook
-
-## Machine Learning Algorithm
-
-Linear Regression
-
-Linear Regression is a supervised learning algorithm used to predict a continuous numerical value. In this project, it is used to predict the price of BMW cars.
+* Yes = 1
+* No = 0
 
 ## Data Preprocessing
 
 The following preprocessing steps were performed:
 
 1. Loaded the dataset using Pandas.
-2. Removed the unnecessary `Unnamed: 0` column.
-3. Checked for missing values.
-4. Filled missing Auction Rating values using the mean.
-5. Removed rows where the Price value was missing.
-6. Converted categorical columns into numerical values using One-Hot Encoding.
-7. Separated the features and target variable.
-8. Split the dataset into training and testing data.
+2. Checked for missing values.
+3. Filled missing numerical values using the mean.
+4. Filled missing categorical values using the mode.
+5. Removed duplicate rows.
+6. Removed rows where the target variable was missing.
+7. Converted the target variable from Yes/No to 1/0.
+8. Converted the categorical `Fuel_Type` column into numerical values using one-hot encoding.
+9. Removed the `Truck_ID` column because it is only an identifier.
 
-## Model Training
+## Machine Learning Algorithm
 
-The dataset was divided into:
+### Logistic Regression
+
+Logistic Regression is a supervised Machine Learning algorithm used for classification problems.
+
+In this project, Logistic Regression predicts whether a truck requires maintenance or not.
+
+## Train-Test Split
+
+The dataset is divided into:
 
 * 80% training data
 * 20% testing data
 
-The Linear Regression model was trained using the training data.
+The training data is used to train the model, while the testing data is used to evaluate its performance.
 
 ## Model Evaluation
 
-The model was evaluated using:
+The model is evaluated using:
 
-* Mean Absolute Error (MAE)
-* Root Mean Squared Error (RMSE)
-* R² Score
+* Accuracy
+* Confusion Matrix
+* Precision
+* Recall
+* F1 Score
 
-### Results
+## Technologies Used
 
-| Metric                  |           Result |
-| ----------------------- | ---------------: |
-| Mean Absolute Error     | 4,700,154.65 PKR |
-| Root Mean Squared Error | 7,361,656.01 PKR |
-| R² Score                |           0.8221 |
-
-The R² score of 0.8221 means that the model explains approximately 82.2% of the variation in BMW car prices in the test dataset.
+* Python
+* Pandas
+* NumPy
+* Scikit-learn
+* Jupyter Notebook
 
 ## Project Structure
 
 ```text
-BMW-Price-Prediction/
+Truck-Maintenance-Prediction/
 │
-├── BMW_Cars_Pakistan.csv
-├── bmw_price_prediction.ipynb
+├── truck_maintenance_dataset.csv
+├── truck_maintenance_prediction.ipynb
 ├── README.md
 └── requirements.txt
 ```
 
 ## How to Run the Project
 
-1. Clone or download this repository.
+1. Download or clone this repository.
 2. Install the required Python libraries.
-3. Open `bmw_price_prediction.ipynb`.
-4. Run the notebook cells in order.
+3. Open `truck_maintenance_prediction.ipynb`.
+4. Make sure the CSV dataset is in the same folder as the notebook.
+5. Run the notebook cells in order.
 
 ## Future Improvements
 
-The performance of the model can be improved by testing other regression algorithms, such as:
+The project can be improved by testing other classification algorithms, such as:
 
-* Decision Tree Regression
-* Random Forest Regression
-* Gradient Boosting Regression
+* Decision Tree Classifier
+* Random Forest Classifier
+* Support Vector Machine
+* K-Nearest Neighbors
 
-Different models can be compared using MAE, RMSE, and R² Score.
+The performance of these models can be compared using accuracy, precision, recall, and F1 score.
 
 ## Author
 
-Nitesh Kumar Jaiswal
+Yash Jaiswal
